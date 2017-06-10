@@ -23,23 +23,22 @@ const listedPrice =
  * transform carts into an array of { customer, total }
  */
 const calculateTotals = listings => carts => {
-  //console.log(carts)
-  //console.log(listings)
     let arr=[]
     for(let cart of carts){
+        let custTot={customer: cart.customer}
         let total=0
       for(let item of cart.items){
         for(let listing of listings){
-           if (listing.name==item){
+           if (listing.name===item){
              total+=listing.price
           }
         }
 
       }
-      arr.push(total)
+      custTot.total=total
+      arr.push(custTot)
     }
-    //return arr
-    console.log(arr)
+    return arr
   }
 
 module.exports = {
